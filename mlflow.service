@@ -1,0 +1,16 @@
+[Unit]
+Description=MLflow server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/opt/mlflow/mlflow-run.sh
+Restart=always
+RestartSec=5
+Environment=PATH=/opt/mlflow/mlflow-env/bin:/usr/bin:/bin
+Environment="MLFLOW_ALLOW_INSECURE_HOSTS=true"
+
+[Install]
+WantedBy=multi-user.target
